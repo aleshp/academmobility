@@ -4,8 +4,7 @@ import Header from './components/Header';
 import Hero from './components/Hero';
 import AboutSection from './components/AboutSection';
 import ProgramsSection from './components/ProgramsSection';
-// RequirementsSection удален
-// TestsSection удален (он теперь внутри Programs)
+import MockTestSection from './components/MockTestSection'; // <--- ИМПОРТ
 import Footer from './components/Footer';
 import ChatWidget from './components/ChatWidget';
 
@@ -20,7 +19,7 @@ function App() {
         <Hero language={language} />
         <AboutSection language={language} />
         <ProgramsSection language={language} />
-        {/* RequirementsSection и TestsSection больше не нужны здесь */}
+        <MockTestSection language={language} /> {/* <--- ДОБАВЛЕНО СЮДА */}
       </main>
 
       <Footer />
