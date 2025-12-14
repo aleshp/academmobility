@@ -5,9 +5,9 @@ export const translations = {
     en: 'Education Without Borders'
   },
   subtitle: {
-    kk: 'Интернационализм жағдайында кәсіби қызмет',
-    ru: 'Профессиональная деятельность в условиях интернационализма',
-    en: 'Professional Activity in the Context of Internationalism'
+    kk: 'Біз жаһандық ойлайтын және әрекет ететін жаңа буын көшбасшыларын дайындаймыз. Әлемдік білім кеңістігіне интеграция.',
+    ru: 'Мы готовим лидеров нового поколения, мыслящих глобально. Интеграция в мировое образовательное пространство начинается здесь.',
+    en: 'We are preparing a new generation of leaders who think globally. Integration into the world educational space starts here.'
   },
   // ИЗМЕНЕНО: Заголовок про Интернационализм
   about: {
