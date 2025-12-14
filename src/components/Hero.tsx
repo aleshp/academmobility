@@ -28,7 +28,7 @@ export default function Hero({ language }: { language: Language }) {
 
       {/* CONTENT */}
       {/* -mt-24 поднимает блок вверх относительно центра */}
-      <div className="relative z-10 max-w-7xl mx-auto px-6 w-full -mt-24 md:-mt-3">
+      <div className="relative z-10 max-w-7xl mx-auto px-6 w-full -mt-24 md:-mt-2">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
