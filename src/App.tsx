@@ -1,14 +1,12 @@
-// App.tsx
 import { useState } from 'react';
 import { Language } from './types/language';
 import Header from './components/Header';
 import Hero from './components/Hero';
 import AboutSection from './components/AboutSection';
 import ProgramsSection from './components/ProgramsSection';
-import RequirementsSection from './components/RequirementsSection';
-import TestsSection from './components/TestsSection';
+// RequirementsSection удален
+// TestsSection удален (он теперь внутри Programs)
 import Footer from './components/Footer';
-// Импортируем виджет
 import ChatWidget from './components/ChatWidget';
 
 function App() {
@@ -22,13 +20,10 @@ function App() {
         <Hero language={language} />
         <AboutSection language={language} />
         <ProgramsSection language={language} />
-        <RequirementsSection language={language} />
-        <TestsSection language={language} />
+        {/* RequirementsSection и TestsSection больше не нужны здесь */}
       </main>
 
       <Footer />
-      
-      {/* Добавляем бота */}
       <ChatWidget />
     </div>
   );
