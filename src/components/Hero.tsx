@@ -1,11 +1,11 @@
 import { motion } from 'framer-motion';
 import { Language } from '../types/language';
 import { translations } from '../data/translations';
-import { ArrowRight, Globe, BookOpen, Users } from 'lucide-react';
+// Добавили иконку Compass
+import { ArrowRight, Globe, BookOpen, Users, Compass } from 'lucide-react'; 
 import heroBg from '../assets/images/hero-bg.jpg';
 
 export default function Hero({ language }: { language: Language }) {
-  // Данные для статистики (можно менять цифры)
   const stats = [
     { number: "50+", label: translations.statPartners[language], icon: BookOpen },
     { number: "15", label: translations.statCountries[language], icon: Globe },
@@ -22,7 +22,6 @@ export default function Hero({ language }: { language: Language }) {
           alt="International Students" 
           className="w-full h-full object-cover"
         />
-        {/* Градиенты для читаемости и стиля */}
         <div className="absolute inset-0 bg-uni-secondary/70 mix-blend-multiply" />
         <div className="absolute inset-0 bg-gradient-to-t from-uni-secondary via-transparent to-transparent" />
         <div className="absolute inset-0 bg-gradient-to-r from-uni-secondary/90 via-uni-secondary/40 to-transparent" />
@@ -53,7 +52,7 @@ export default function Hero({ language }: { language: Language }) {
           </p>
           
           <div className="flex flex-col sm:flex-row gap-4">
-            {/* Кнопка 1: Скролл к программам */}
+            {/* Кнопка 1: Программы */}
             <a 
               href="#programs"
               className="bg-uni-primary hover:bg-red-800 text-white px-8 py-4 rounded-lg font-bold transition flex items-center justify-center gap-2 group shadow-lg shadow-uni-primary/20"
@@ -62,18 +61,19 @@ export default function Hero({ language }: { language: Language }) {
               <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
             </a>
             
-            {/* Кнопка 2: Скролл к теории (О центре) */}
+            {/* Кнопка 2: Глобальное видение (ведет на About/Теорию) */}
             <a 
               href="#about"
-              className="px-8 py-4 rounded-lg font-bold text-white border border-white/30 hover:bg-white/10 backdrop-blur-sm transition flex items-center justify-center"
+              className="px-8 py-4 rounded-lg font-bold text-white border border-white/30 hover:bg-white/10 backdrop-blur-sm transition flex items-center justify-center gap-2"
             >
+              <Compass className="w-5 h-5" /> {/* Иконка компаса */}
               {translations.heroBtnSecondary[language]}
             </a>
           </div>
         </motion.div>
       </div>
 
-      {/* STATS BAR (BOTTOM) */}
+      {/* STATS BAR */}
       <div className="absolute bottom-0 left-0 right-0 z-20 border-t border-white/10 bg-uni-secondary/80 backdrop-blur-md">
         <div className="max-w-7xl mx-auto px-6 py-6">
           <div className="grid grid-cols-3 gap-8 md:gap-16">
