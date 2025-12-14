@@ -71,5 +71,10 @@ export const translations = {
     kk: 'DELF/DALF - Француз тілінің дипломы (деңгей: B2+)',
     ru: 'DELF/DALF - Диплом по французскому языку (уровень: B2+)',
     en: 'DELF/DALF - French language diploma (level: B2+)'
+  },
+  testdaf: {
+    kk: 'TestDaF - Шетел тілі ретінде неміс тілі (деңгей: TDN 4)',
+    ru: 'TestDaF - Тест по немецкому языку как иностранному (уровень: TDN 4)',
+    en: 'TestDaF - Test of German as a Foreign Language (level: TDN 4)'
   }
 };
