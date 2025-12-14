@@ -1,8 +1,7 @@
 import { motion } from 'framer-motion';
 import { Language } from '../types/language';
 import { translations } from '../data/translations';
-// Добавили иконку Compass
-import { ArrowRight, Globe, BookOpen, Users, Compass } from 'lucide-react'; 
+import { ArrowRight, Globe, BookOpen, Users, Compass } from 'lucide-react';
 import heroBg from '../assets/images/hero-bg.jpg';
 
 export default function Hero({ language }: { language: Language }) {
@@ -28,20 +27,15 @@ export default function Hero({ language }: { language: Language }) {
       </div>
 
       {/* CONTENT */}
-      <div className="relative z-10 max-w-7xl mx-auto px-6 w-full pt-20">
+      {/* -mt-24 поднимает блок вверх относительно центра */}
+      <div className="relative z-10 max-w-7xl mx-auto px-6 w-full -mt-24 md:-mt-32">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
           className="max-w-4xl"
         >
-          {/* Декоративный бейдж */}
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-uni-accent/30 bg-uni-accent/10 backdrop-blur-sm mb-6">
-            <span className="w-2 h-2 rounded-full bg-uni-accent animate-pulse" />
-            <span className="text-xs font-bold tracking-widest text-uni-accent uppercase">
-              Internationalization Hub
-            </span>
-          </div>
+          {/* БЕЙДЖ УДАЛЕН */}
 
           <h1 className="text-5xl md:text-7xl lg:text-8xl font-serif font-bold text-white mb-8 leading-tight tracking-tight">
             {translations.title[language]}
@@ -61,12 +55,12 @@ export default function Hero({ language }: { language: Language }) {
               <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
             </a>
             
-            {/* Кнопка 2: Глобальное видение (ведет на About/Теорию) */}
+            {/* Кнопка 2: Глобальное видение */}
             <a 
               href="#about"
               className="px-8 py-4 rounded-lg font-bold text-white border border-white/30 hover:bg-white/10 backdrop-blur-sm transition flex items-center justify-center gap-2"
             >
-              <Compass className="w-5 h-5" /> {/* Иконка компаса */}
+              <Compass className="w-5 h-5" />
               {translations.heroBtnSecondary[language]}
             </a>
           </div>
