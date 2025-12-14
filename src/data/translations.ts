@@ -9,6 +9,10 @@ export const translations = {
     ru: 'Мы готовим лидеров нового поколения, мыслящих глобально. Интеграция в мировое образовательное пространство начинается здесь.',
     en: 'We are preparing a new generation of leaders who think globally. Integration into the world educational space starts here.'
   },
+  heroBtnPrimary: {
+    kk: 'Мүмкіндіктерді ашу',
+    ru: 'Открыть возможности',
+    en: 'Discover Opportunities'
   // ИЗМЕНЕНО: Заголовок про Интернационализм
   about: {
     kk: 'Интернационалдандыру дегеніміз не?',
