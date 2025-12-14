@@ -1,8 +1,8 @@
 export const translations = {
   title: {
-    kk: 'Академиялық ұтқырлық',
-    ru: 'Академическая мобильность',
-    en: 'Academic Mobility'
+    kk: 'Шекарасыз білім беру',
+    ru: 'Образование без границ',
+    en: 'Education Without Borders'
   },
   subtitle: {
     kk: 'Интернационализм жағдайында кәсіби қызмет',
