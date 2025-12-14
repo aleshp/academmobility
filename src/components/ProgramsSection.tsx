@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion';
 import { Language } from '../types/language';
 import { translations } from '../data/translations';
-import { Globe, Award, Users, ArrowUpRight, Download, FileCheck } from 'lucide-react';
+import { Globe, Award, Users, ArrowUpRight, FileCheck, ExternalLink } from 'lucide-react';
 
 export default function ProgramsSection({ language }: { language: Language }) {
   // Данные для программ
@@ -11,12 +11,38 @@ export default function ProgramsSection({ language }: { language: Language }) {
     { icon: Users, title: 'Exchange', desc: translations.exchange[language] }
   ];
 
-  // Данные для тестов (перенесли сюда)
+  // Данные для тестов (обновленные со ссылками)
   const tests = [
-    { name: 'IELTS Academic', min: '6.0', desc: translations.ielts[language] },
-    { name: 'TOEFL iBT', min: '80', desc: translations.toefl[language] },
-    { name: 'Goethe-Zertifikat', min: 'B2', desc: translations.goethe[language] },
-    { name: 'DELF/DALF', min: 'B2', desc: translations.delf[language] },
+    { 
+      name: 'IELTS Academic', 
+      min: '6.0', 
+      desc: translations.ielts[language], 
+      link: 'https://www.ielts.org' 
+    },
+    { 
+      name: 'TOEFL iBT', 
+      min: '80', 
+      desc: translations.toefl[language], 
+      link: 'https://www.ets.org/toefl' 
+    },
+    { 
+      name: 'Goethe-Zertifikat', 
+      min: 'B2', 
+      desc: translations.goethe[language], 
+      link: 'https://www.goethe.de' 
+    },
+    { 
+      name: 'TestDaF', // НОВЫЙ ТЕСТ
+      min: 'TDN 4', 
+      desc: translations.testdaf[language], 
+      link: 'https://www.testdaf.de' 
+    },
+    { 
+      name: 'DELF/DALF', 
+      min: 'B2', 
+      desc: translations.delf[language], 
+      link: 'https://www.france-education-international.fr/hub/diplomes-tests' 
+    },
   ];
 
   return (
@@ -60,7 +86,7 @@ export default function ProgramsSection({ language }: { language: Language }) {
           </div>
         </div>
 
-        {/* --- ЧАСТЬ 2: ТЕСТЫ (Теперь внутри этого же блока) --- */}
+        {/* --- ЧАСТЬ 2: ТЕСТЫ --- */}
         <motion.div 
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
@@ -83,7 +109,7 @@ export default function ProgramsSection({ language }: { language: Language }) {
                   <th className="p-4">Экзамен</th>
                   <th className="p-4">Мин. Балл</th>
                   <th className="p-4 hidden md:table-cell">Описание</th>
-                  <th className="p-4 text-right">Материалы</th>
+                  <th className="p-4 text-right">Официальный сайт</th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-gray-100 text-sm text-gray-700">
@@ -93,9 +119,14 @@ export default function ProgramsSection({ language }: { language: Language }) {
                     <td className="p-4 font-mono font-semibold bg-gray-50/50">{t.min}</td>
                     <td className="p-4 hidden md:table-cell text-gray-500">{t.desc}</td>
                     <td className="p-4 text-right">
-                      <button className="inline-flex items-center gap-2 text-xs font-bold text-gray-400 hover:text-uni-primary transition border border-gray-200 hover:border-uni-primary px-3 py-1 rounded">
-                        <Download className="w-3 h-3" /> PDF
-                      </button>
+                      <a 
+                        href={t.link} 
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-2 text-xs font-bold text-uni-secondary hover:text-uni-primary transition border border-gray-200 hover:border-uni-primary px-3 py-2 rounded hover:bg-white"
+                      >
+                        Official Site <ExternalLink className="w-3 h-3" />
+                      </a>
                     </td>
                   </tr>
                 ))}
@@ -103,7 +134,7 @@ export default function ProgramsSection({ language }: { language: Language }) {
             </table>
           </div>
           <p className="mt-4 text-xs text-gray-400 italic text-center md:text-left">
-            * Требования к баллам могут меняться в зависимости от выбранного университета-партнера.
+            * Для подачи заявки необходимо зарегистрироваться на официальном сайте провайдера теста.
           </p>
         </motion.div>
 
