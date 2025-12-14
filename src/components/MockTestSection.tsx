@@ -393,4 +393,71 @@ export default function MockTestSection({ language }: { language: Language }) {
             <div className="h-full flex flex-col">
               <textarea 
                 value={writingText}
-                onChange={e => setWritingText(e.target.value
+                onChange={e => setWritingText(e.target.value)}
+                placeholder="Start typing your response here..."
+                className="flex-1 p-8 border border-gray-300 rounded-lg resize-none focus:ring-2 focus:ring-uni-primary/20 focus:border-uni-primary text-lg font-serif leading-relaxed shadow-sm transition-all outline-none"
+                spellCheck={false}
+              />
+              {/* WORD COUNT DISPLAY */}
+              <div className="mt-3 flex justify-end">
+                <span className={`text-sm font-bold px-3 py-1 rounded transition-colors ${getWordCount() >= 250 ? 'bg-green-100 text-green-700' : 'bg-red-100 text-red-600'}`}>
+                  Word Count: {getWordCount()} / 250
+                </span>
+              </div>
+            </div>
+          ) : (
+            <div className="max-w-xl mx-auto space-y-8">
+              {TEST_DATA[activeSection as 'reading' | 'listening'].questions.map((q, i) => {
+                 if (i !== currentQuestionIndex) return null;
+                 const prefix = activeSection === 'reading' ? 'r-' : 'l-';
+                 return (
+                   <div key={i} className="bg-white p-8 rounded-xl shadow-sm border border-gray-200">
+                     <h3 className="font-bold text-lg mb-6 text-gray-900 leading-snug">{q.question}</h3>
+                     
+                     {q.type === 'multiple_choice' && q.options?.map((opt, idx) => (
+                       <label key={idx} className="flex items-center p-4 border border-gray-200 rounded-lg mb-3 cursor-pointer hover:bg-gray-50 hover:border-uni-primary/30 transition-all">
+                         <input type="radio" checked={answers[`${prefix}${q.id}`] === opt.split('.')[0].trim()} onChange={() => setAnswers(p => ({...p, [`${prefix}${q.id}`]: opt.split('.')[0].trim()}))} className="w-5 h-5 text-uni-primary border-gray-300 focus:ring-uni-primary mr-3"/>
+                         <span className="text-gray-700">{opt}</span>
+                       </label>
+                     ))}
+                     
+                     {q.type === 'true_false' && (
+                       <div className="flex gap-3 mt-4">{q.options?.map(opt => (
+                         <button key={opt} onClick={() => setAnswers(p => ({...p, [`${prefix}${q.id}`]: opt}))} className={`flex-1 py-3 border rounded font-bold transition-all shadow-sm ${answers[`${prefix}${q.id}`] === opt ? 'bg-uni-primary text-white border-uni-primary' : 'bg-white text-gray-600 hover:bg-gray-50'}`}>{opt}</button>
+                       ))}</div>
+                     )}
+                     
+                     {q.type === 'gap_fill' && (
+                       <div className="relative mt-2">
+                         <input type="text" value={answers[`${prefix}${q.id}`] || ''} onChange={e => setAnswers(p => ({...p, [`${prefix}${q.id}`]: e.target.value}))} className="w-full p-4 pl-4 border border-gray-300 rounded font-bold text-lg focus:ring-2 focus:ring-uni-primary/20 focus:border-uni-primary outline-none transition-all" placeholder="Type answer here..."/>
+                       </div>
+                     )}
+                   </div>
+                 );
+              })}
+            </div>
+          )}
+        </div>
+      </div>
+
+      {/* Bottom Bar */}
+      <div className="bg-white h-20 border-t border-gray-300 px-6 flex items-center justify-between flex-shrink-0">
+        <div className="flex gap-2">
+          {activeSection !== 'writing' && TEST_DATA[activeSection as 'reading'|'listening'].questions.map((_, i) => (
+            <button key={i} onClick={() => setCurrentQuestionIndex(i)} className={`w-9 h-9 rounded font-bold transition-all ${currentQuestionIndex === i ? 'bg-uni-secondary text-white shadow-md scale-105' : 'bg-gray-200 text-gray-600 hover:bg-gray-300'}`}>{i+1}</button>
+          ))}
+        </div>
+        <div className="flex gap-4">
+           {activeSection !== 'writing' && <button onClick={() => setCurrentQuestionIndex(p => Math.max(0, p-1))} className="px-5 py-2.5 bg-white border border-gray-300 rounded font-bold text-gray-700 hover:bg-gray-50 transition">Prev</button>}
+           {activeSection !== 'writing' && currentQuestionIndex < TEST_DATA[activeSection as 'reading'|'listening'].questions.length-1 ? (
+             <button onClick={() => setCurrentQuestionIndex(p => p+1)} className="px-5 py-2.5 bg-uni-secondary text-white rounded font-bold hover:bg-gray-800 transition shadow-md">Next</button>
+           ) : (
+             <button onClick={finishSection} className="px-8 py-2.5 bg-uni-primary text-white rounded font-bold shadow-md hover:bg-red-800 transition flex items-center gap-2">
+               Submit Section <CheckCircle2 size={18}/>
+             </button>
+           )}
+        </div>
+      </div>
+    </section>
+  );
+}
