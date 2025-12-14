@@ -51,6 +51,8 @@ export default function MockTestSection({ language }: { language: Language }) {
     return `${m.toString().padStart(2, '0')}:${s.toString().padStart(2, '0')}`;
   };
 
+  // --- NAVIGATION LOGIC ---
+
   const startSection = (section: 'listening' | 'reading' | 'writing') => {
     setActiveSection(section);
     let duration = 0;
@@ -69,6 +71,17 @@ export default function MockTestSection({ language }: { language: Language }) {
   const finishSection = () => {
     setActiveSection('results');
     setIsPlaying(false);
+  };
+
+  const handleReturnToMenu = () => {
+    setActiveSection('menu');
+    // Исправление навигации: Скроллим к началу теста
+    setTimeout(() => {
+      const element = document.getElementById('mock-test');
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }
+    }, 100);
   };
 
   // --- AI GRADING ---
@@ -92,26 +105,37 @@ export default function MockTestSection({ language }: { language: Language }) {
     }
   };
 
-  // --- SCORING ---
+  // --- SCORING (ИСПРАВЛЕНА ЛОГИКА) ---
   const calculateScores = () => {
-    let rScore = 0, lScore = 0;
+    let rScore = 0;
+    let lScore = 0;
     
-    // Reading
+    // Подсчет Reading (нечувствительный к регистру)
     READING_DATA.passages.forEach(p => {
       p.questions.forEach(q => {
-        if (answers[`r-${q.id}`] === q.correct) rScore++;
+        const userAnswer = (answers[`r-${q.id}`] || '').trim().toLowerCase();
+        const correctAnswer = q.correct.trim().toLowerCase();
+        
+        // Для Multiple choice и T/F проверяем точное совпадение
+        if (q.type === 'multiple_choice' || q.type === 'true_false') {
+          if (userAnswer === correctAnswer) rScore++;
+        } 
+        // Для Gap fill (текст) тоже сверяем в нижнем регистре
+        else {
+           if (userAnswer === correctAnswer) rScore++;
+        }
       });
     });
 
-    // Listening
+    // Подсчет Listening
     LISTENING_DATA.questions.forEach(q => {
-      const raw = answers[`l-${q.id}`] || '';
-      if (raw.toLowerCase().trim() === q.correct.toLowerCase() || (q.type === 'multiple_choice' && raw === q.correct)) {
-        lScore++;
-      }
+      const userAnswer = (answers[`l-${q.id}`] || '').trim().toLowerCase();
+      const correctAnswer = q.correct.trim().toLowerCase();
+      
+      if (userAnswer === correctAnswer) lScore++;
     });
 
-    // Calculate Totals
+    // Подсчет максимумов
     const rTotal = READING_DATA.passages.reduce((acc, p) => acc + p.questions.length, 0);
     const lTotal = LISTENING_DATA.questions.length;
 
@@ -119,6 +143,8 @@ export default function MockTestSection({ language }: { language: Language }) {
   };
 
   // --- RENDERS ---
+
+  // 1. MENU
   if (activeSection === 'menu') {
     return (
       <section id="mock-test" className="py-24 bg-uni-gray">
@@ -155,37 +181,75 @@ export default function MockTestSection({ language }: { language: Language }) {
     );
   }
 
+  // 2. RESULTS
   if (activeSection === 'results') {
     const { rScore, rTotal, lScore, lTotal } = calculateScores();
     const wWords = writingText.trim().split(/\s+/).filter(w => w.length > 0).length;
-    const hasReading = Object.keys(answers).some(k => k.startsWith('r-'));
-    const hasListening = Object.keys(answers).some(k => k.startsWith('l-'));
+    
+    // Проверяем, проходил ли студент тест (есть ли ответы ИЛИ есть ли баллы > 0)
+    const hasReading = Object.keys(answers).some(k => k.startsWith('r-')) || rScore > 0;
+    const hasListening = Object.keys(answers).some(k => k.startsWith('l-')) || lScore > 0;
 
     return (
       <section className="py-24 bg-uni-gray min-h-screen flex items-center justify-center">
         <div className="bg-white p-12 rounded-2xl shadow-2xl max-w-3xl w-full">
           <h2 className="text-3xl font-bold text-center mb-8">Test Results</h2>
+          
           <div className="space-y-6">
-            {(hasReading || hasListening) && (
+            {/* Блок результатов (показываем, если есть ответы) */}
+            {(hasReading || hasListening) ? (
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                {hasReading && <div className="bg-red-50 p-6 rounded text-center"><h3 className="font-bold text-uni-primary">Reading</h3><p className="text-4xl font-serif">{rScore} / {rTotal}</p></div>}
-                {hasListening && <div className="bg-blue-50 p-6 rounded text-center"><h3 className="font-bold text-blue-600">Listening</h3><p className="text-4xl font-serif">{lScore} / {lTotal}</p></div>}
+                {hasReading && (
+                  <div className="bg-red-50 p-6 rounded text-center border border-red-100">
+                    <h3 className="font-bold text-uni-primary mb-2">Reading</h3>
+                    <p className="text-5xl font-serif font-bold text-gray-900">{rScore} <span className="text-lg text-gray-400 font-sans">/ {rTotal}</span></p>
+                  </div>
+                )}
+                {hasListening && (
+                  <div className="bg-blue-50 p-6 rounded text-center border border-blue-100">
+                    <h3 className="font-bold text-blue-600 mb-2">Listening</h3>
+                    <p className="text-5xl font-serif font-bold text-gray-900">{lScore} <span className="text-lg text-gray-400 font-sans">/ {lTotal}</span></p>
+                  </div>
+                )}
               </div>
+            ) : (
+              // Если ни Reading ни Listening не проходили
+              !writingText && (
+                <div className="text-center text-gray-500 italic">
+                  No questions answered.
+                </div>
+              )
             )}
+
+            {/* Writing Result */}
             {writingText.length > 0 && (
-              <div className="bg-yellow-50 p-8 rounded shadow-inner">
+              <div className="bg-yellow-50 p-8 rounded shadow-inner border border-yellow-100">
                 <h3 className="font-bold text-lg text-yellow-800 mb-4">Writing Assessment</h3>
-                {isGrading && <div className="text-center"><Loader2 className="animate-spin inline mr-2"/> Calculating Score...</div>}
-                {!isGrading && aiFeedback && <div className="prose prose-sm" dangerouslySetInnerHTML={{ __html: aiFeedback }} />}
+                {isGrading && (
+                  <div className="text-center py-4">
+                    <Loader2 className="animate-spin inline mr-2 text-yellow-600"/> 
+                    <span className="font-bold text-yellow-800">Calculating Official Band Score...</span>
+                  </div>
+                )}
+                {!isGrading && aiFeedback && (
+                  <div className="prose prose-sm max-w-none bg-white p-6 rounded border border-yellow-200" dangerouslySetInnerHTML={{ __html: aiFeedback }} />
+                )}
               </div>
             )}
           </div>
-          <button onClick={() => setActiveSection('menu')} className="mt-8 w-full bg-uni-secondary text-white py-3 rounded font-bold">Return to Menu</button>
+
+          <button 
+            onClick={handleReturnToMenu} 
+            className="mt-8 w-full bg-uni-secondary text-white py-4 rounded font-bold hover:bg-gray-800 transition shadow-lg"
+          >
+            Return to Menu
+          </button>
         </div>
       </section>
     );
   }
 
+  // 3. INTERFACE (TEST UI)
   return (
     <section className="fixed inset-0 z-[60] bg-gray-100 flex flex-col h-screen">
       {/* Top Bar */}
