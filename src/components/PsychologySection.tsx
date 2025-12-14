@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { Brain, Activity, UserCheck } from 'lucide-react';
 import MotivationTest from './psychology/MotivationTest';
 import SelfEsteemTest from './psychology/SelfEsteemTest';
-// import ReadinessTest from './psychology/ReadinessTest'; // Подключишь, когда сделаешь
+import ReadinessTest from './psychology/ReadinessTest'; // <--- Импортируем
 
 export default function PsychologySection() {
   const [activeTab, setActiveTab] = useState<'motivation' | 'esteem' | 'readiness'>('motivation');
@@ -18,7 +18,7 @@ export default function PsychologySection() {
         </div>
 
         {/* Tabs */}
-        <div className="flex justify-center mb-8 gap-4">
+        <div className="flex flex-wrap justify-center mb-8 gap-4">
           <button
             onClick={() => setActiveTab('motivation')}
             className={`flex items-center gap-2 px-6 py-3 rounded-full font-bold transition ${
@@ -48,15 +48,7 @@ export default function PsychologySection() {
         {/* Content */}
         {activeTab === 'motivation' && <MotivationTest />}
         {activeTab === 'esteem' && <SelfEsteemTest />}
-        {activeTab === 'readiness' && (
-          <div className="bg-white p-8 rounded-xl text-center border border-gray-200">
-            <h3 className="text-xl font-bold mb-4">Тест "Профессиональная готовность"</h3>
-            <p className="text-gray-500">
-              Этот тест содержит 99 вопросов и требует детальной проработки. 
-              (Сюда нужно вставить компонент ReadinessTest после полного заполнения базы данных).
-            </p>
-          </div>
-        )}
+        {activeTab === 'readiness' && <ReadinessTest />} {/* <--- Вставляем компонент */}
         
       </div>
     </section>
