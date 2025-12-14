@@ -1,3 +1,5 @@
+// src/data/translations.ts
+
 export const translations = {
   title: {
     kk: 'Академиялық ұтқырлық',
@@ -9,28 +11,20 @@ export const translations = {
     ru: 'Профессиональная деятельность в условиях интернационализма',
     en: 'Professional Activity in the Context of Internationalism'
   },
-  // ИЗМЕНЕНО: Заголовок про Интернационализм
   about: {
-    kk: 'Интернационалдандыру дегеніміз не?',
-    ru: 'Что такое интернационализация?',
-    en: 'What is Internationalization?'
+    kk: 'Академиялық ұтқырлық туралы',
+    ru: 'Об академической мобильности',
+    en: 'About Academic Mobility'
   },
-  // ИЗМЕНЕНО: Текст про глобальный процесс
   aboutText: {
-    kk: 'Интернационалдандыру — бұл университеттің мақсатына, қызметтеріне және оқыту процесіне халықаралық және мәдениаралық аспектілерді енгізу процесі. Бұл тек шетелге шығу ғана емес, сонымен қатар әлемдік стандарттарды үйдегі кампусқа әкелу.',
-    ru: 'Интернационализация — это процесс интеграции международного и межкультурного измерения в цели, функции и процесс обучения университета. Это не только мобильность, но и внедрение мировых стандартов в домашнем кампусе.',
-    en: 'Internationalization is the process of integrating an international, intercultural, or global dimension into the purpose, functions or delivery of post-secondary education. It is not just mobility, but bringing global standards to the home campus.'
-  },
-  // Новая кнопка
-  moreDetails: {
-    kk: 'Толығырақ',
-    ru: 'Подробнее',
-    en: 'More details'
+    kk: 'Академиялық ұтқырлық - студенттер мен оқытушылардың білім беру процесіне қатысу үшін басқа оқу орындарына уақытша көшуі. Бұл халықаралық тәжірибе алу, білімді кеңейту және мәдениаралық құзыреттілікті дамыту мүмкіндігі.',
+    ru: 'Академическая мобильность - это временное перемещение студентов и преподавателей в другие учебные заведения для участия в образовательном процессе. Это возможность получить международный опыт, расширить знания и развить межкультурные компетенции.',
+    en: 'Academic mobility is the temporary movement of students and teachers to other educational institutions to participate in the educational process. It is an opportunity to gain international experience, expand knowledge and develop intercultural competencies.'
   },
   programs: {
-    kk: 'Бағдарламалар мен Тесттер',
-    ru: 'Программы и Тесты',
-    en: 'Programs and Tests'
+    kk: 'Бағдарламалар',
+    ru: 'Программы',
+    en: 'Programs'
   },
   erasmus: {
     kk: 'Erasmus+ - Еуропалық білім беру бағдарламасы, сабақ беру мен оқуға 3-12 айға дейінгі мерзімге мүмкіндік береді.',
@@ -47,10 +41,30 @@ export const translations = {
     ru: 'Программы студенческого обмена с университетами-партнерами на один семестр или учебный год.',
     en: 'Student exchange programs with partner universities for one semester or academic year.'
   },
+  requirements: {
+    kk: 'Талаптар',
+    ru: 'Требования',
+    en: 'Requirements'
+  },
+  reqGPA: {
+    kk: 'GPA кемінде 3.0',
+    ru: 'GPA не менее 3.0',
+    en: 'GPA of at least 3.0'
+  },
+  reqLanguage: {
+    kk: 'Тілді білу сертификаты (IELTS, TOEFL, т.б.)',
+    ru: 'Сертификат знания языка (IELTS, TOEFL и др.)',
+    en: 'Language proficiency certificate (IELTS, TOEFL, etc.)'
+  },
+  reqMotivation: {
+    kk: 'Мотивациялық хат және ұсыным хаттары',
+    ru: 'Мотивационное письмо и рекомендательные письма',
+    en: 'Motivation letter and recommendation letters'
+  },
   tests: {
     kk: 'Қажетті тесттер',
-    ru: 'Необходимые языковые тесты',
-    en: 'Required Language Tests'
+    ru: 'Необходимые тесты',
+    en: 'Required Tests'
   },
   ielts: {
     kk: 'IELTS - Халықаралық ағылшын тілін білу жүйесі (балл: 6.0+)',
