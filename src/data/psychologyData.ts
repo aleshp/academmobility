@@ -1,8 +1,5 @@
 import { Language } from '../types/language';
 
-// Тип для переводимых строк
-type LocalizedString = Record<Language, string>;
-
 // --- 1. ТЕСТ МОТИВАЦИИ (РЕАН) ---
 export const MOTIVATION_TEST = {
   id: 'motivation',
@@ -41,7 +38,7 @@ export const MOTIVATION_TEST = {
     { 
       id: 3, 
       text: { 
-        ru: 'Стремление избежать критики руководителя/коллег', 
+        ru: 'Стремление избежать критики со стороны руководителя или коллег', 
         kk: 'Басшының немесе әріптестердің сынынан қашу', 
         en: 'Desire to avoid criticism from boss/colleagues' 
       } 
@@ -49,7 +46,7 @@ export const MOTIVATION_TEST = {
     { 
       id: 4, 
       text: { 
-        ru: 'Стремление избежать наказаний или неприятностей', 
+        ru: 'Стремление избежать возможных наказаний или неприятностей', 
         kk: 'Жазадан немесе келеңсіздіктерден қашу', 
         en: 'Desire to avoid punishment or trouble' 
       } 
@@ -57,7 +54,7 @@ export const MOTIVATION_TEST = {
     { 
       id: 5, 
       text: { 
-        ru: 'Потребность в социальном престиже и уважении', 
+        ru: 'Потребность в достижении социального престижа и уважения со стороны других', 
         kk: 'Әлеуметтік бедел мен құрметке деген қажеттілік', 
         en: 'Need for social prestige and respect' 
       } 
@@ -65,7 +62,7 @@ export const MOTIVATION_TEST = {
     { 
       id: 6, 
       text: { 
-        ru: 'Удовлетворение от процесса и результата работы', 
+        ru: 'Удовлетворение от самого процесса и результата работы', 
         kk: 'Жұмыс процесі мен нәтижесінен қанағаттану', 
         en: 'Satisfaction from the work process and result' 
       } 
@@ -73,7 +70,7 @@ export const MOTIVATION_TEST = {
     { 
       id: 7, 
       text: { 
-        ru: 'Возможность самореализации', 
+        ru: 'Возможность наиболее полной самореализации именно в данной деятельности', 
         kk: 'Өзін-өзі жүзеге асыру мүмкіндігі', 
         en: 'Possibility of self-realization' 
       } 
@@ -83,15 +80,16 @@ export const MOTIVATION_TEST = {
 
 // --- 2. ТЕСТ САМООЦЕНКИ ---
 export const SELF_ESTEEM_TEST = {
+  id: 'self_esteem',
   title: {
     ru: 'Самооценка личности',
     kk: 'Тұлғаның өзін-өзі бағалауы',
     en: 'Self-Esteem Assessment'
   },
   description: {
-    ru: 'Сравнение "Идеала" и "Я".',
-    kk: '"Идеал" мен "Мен" салыстыру.',
-    en: 'Comparing "Ideal" and "Real Self".'
+    ru: 'Сравнение "Идеала" и "Я". Оцените качества от 1 до 20.',
+    kk: '"Идеал" мен "Мен" салыстыру. Қасиеттерді 1-ден 20-ға дейін бағалаңыз.',
+    en: 'Comparing "Ideal" and "Real Self". Rank qualities from 1 to 20.'
   },
   qualities: [
     { ru: 'Уступчивость', kk: 'Көнгіштік', en: 'Compliance' },
