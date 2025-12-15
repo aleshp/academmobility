@@ -3,7 +3,7 @@ export default function Footer() {
     <footer className="bg-uni-secondary text-white pt-12 pb-6 text-sm">
       <div className="max-w-7xl mx-auto px-6 grid md:grid-cols-3 gap-8 mb-8">
         <div>
-          <h3 className="font-serif font-bold text-lg mb-4">INTERNACIONALIZATION CENTRE</h3>
+          <h3 className="font-serif font-bold text-lg mb-4">INTERNATIONALIZATION CENTRE</h3>
           <p className="text-gray-400 max-w-xs">Центр интернационализации и академической мобильности.</p>
         </div>
         <div>
