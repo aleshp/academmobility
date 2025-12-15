@@ -8,13 +8,12 @@ import MockTestSection from './components/MockTestSection';
 import PsychologySection from './components/PsychologySection';
 import Footer from './components/Footer';
 import ChatWidget from './components/ChatWidget';
-import InternationalizationPage from './components/InternationalizationPage'; // <--- 1. ИМПОРТ
+import InternationalizationPage from './components/InternationalizationPage';
 
 function App() {
   const [language, setLanguage] = useState<Language>('ru');
-  const [showTheory, setShowTheory] = useState(false); // <--- 2. НОВОЕ СОСТОЯНИЕ
+  const [showTheory, setShowTheory] = useState(false);
 
-  // 3. Если состояние true, показываем только страницу теории
   if (showTheory) {
     return <InternationalizationPage onBack={() => setShowTheory(false)} />;
   }
@@ -25,14 +24,15 @@ function App() {
       
       <main>
         <Hero language={language} />
-        {/* 4. Передаем функцию открытия страницы */}
         <AboutSection 
           language={language} 
           onReadMore={() => setShowTheory(true)} 
         />
         <ProgramsSection language={language} />
         <MockTestSection language={language} />
-        <PsychologySection />
+        
+        {/* ВОТ ЗДЕСЬ БЫЛА ОШИБКА. ТЕПЕРЬ ЯЗЫК ПЕРЕДАЕТСЯ: */}
+        <PsychologySection language={language} />
       </main>
 
       <Footer />
