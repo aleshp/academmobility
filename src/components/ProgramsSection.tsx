@@ -56,7 +56,7 @@ export default function ProgramsSection({ language }: { language: Language }) {
       icon: Briefcase,
       title: 'Staff Mobility / 500 Scientists',
       desc: translations.staffMobility[language],
-      link: 'https://bolashak.gov.kz/ru/pretendentu/500-uchenyh', // Ссылка на 500 ученых
+      link: 'https://erasmus-plus.ec.europa.eu/programme-guide/part-b/key-action-1/higher-education-mobility-projects', // Ссылка на 500 ученых
       type: 'staff',
       highlight: true // Выделим цветом
     }
