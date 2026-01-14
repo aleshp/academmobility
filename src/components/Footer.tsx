@@ -16,15 +16,15 @@ export default function Footer() {
           <ul className="space-y-3">
             <li className="flex items-start gap-3">
               <MapPin className="w-5 h-5 text-uni-primary flex-shrink-0" />
-              <span className="text-gray-400">г. Павлодар, ул. Олжабай Батыра 60</span>
+              <span className="text-gray-400">г. Павлодар, ул. Торайгырова 58</span>
             </li>
             <li className="flex items-center gap-3">
               <Phone className="w-5 h-5 text-uni-primary flex-shrink-0" />
-              <span className="text-gray-400">+7 (7182) 67-36-85</span>
+              <span className="text-gray-400">+7 702 528-04-42</span>
             </li>
             <li className="flex items-center gap-3">
               <Mail className="w-5 h-5 text-uni-primary flex-shrink-0" />
-              <span className="text-gray-400">international@margulan.edu.kz</span>
+              <span className="text-gray-400">bzhumakeldina@gmail.com</span>
             </li>
           </ul>
         </div>
