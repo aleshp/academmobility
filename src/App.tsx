@@ -9,6 +9,7 @@ import PsychologySection from './components/PsychologySection';
 import Footer from './components/Footer';
 import ChatWidget from './components/ChatWidget';
 import InternationalizationPage from './components/InternationalizationPage';
+import QuickAccess from './components/QuickAccess';
 
 function App() {
   const [language, setLanguage] = useState<Language>('ru');
@@ -24,6 +25,7 @@ function App() {
       
       <main>
         <Hero language={language} />
+        <QuickAccess language={language} /> 
         <AboutSection 
           language={language} 
           onReadMore={() => setShowTheory(true)} 
