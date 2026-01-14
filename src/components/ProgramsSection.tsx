@@ -34,7 +34,7 @@ export default function ProgramsSection({ language }: { language: Language }) {
       icon: Plane,
       title: 'Orhun Exchange',
       desc: translations.orhun[language],
-      link: 'http://turkunib.org/en/orhun-exchange-program',
+      link: 'http://turkunib.org/orhun/',
       type: 'student'
     },
     {
@@ -48,7 +48,7 @@ export default function ProgramsSection({ language }: { language: Language }) {
       icon: Globe,
       title: 'Global UGRAD',
       desc: translations.ugrad[language],
-      link: 'https://kz.usembassy.gov/education-culture/opportunities/global-ugrad/',
+      link: 'https://kz.usembassy.gov/ru/global-ugrad/',
       type: 'student'
     },
     // ДЛЯ СОТРУДНИКОВ (Служебные командировки)
