@@ -103,4 +103,25 @@ export const translations = {
     ru: 'TestDaF - Тест по немецкому языку как иностранному (уровень: TDN 4)',
     en: 'TestDaF - Test of German as a Foreign Language (level: TDN 4)'
   }
+  // НОВЫЕ ПРОГРАММЫ
+  orhun: {
+    kk: 'Orhun - Түркі кеңесінің мүше мемлекеттері арасындағы алмасу бағдарламасы.',
+    ru: 'Orhun - Программа обмена между странами-членами Тюркского совета.',
+    en: 'Orhun - Exchange program between member states of the Turkic Council.'
+  },
+  daad: {
+    kk: 'DAAD - Германияда оқуға және зерттеу жүргізуге арналған стипендиялар.',
+    ru: 'DAAD - Стипендии для обучения и научных исследований в Германии.',
+    en: 'DAAD - Scholarships for study and research in Germany.'
+  },
+  ugrad: {
+    kk: 'Global UGRAD - АҚШ-та бір семестр оқуға арналған көшбасшылық бағдарлама.',
+    ru: 'Global UGRAD - Лидерская программа для обучения в США в течение одного семестра.',
+    en: 'Global UGRAD - Leadership program for one semester of study in the USA.'
+  },
+  staffMobility: {
+    kk: 'Ғылыми тағылымдамалар («500 ғалым») және қызметтік іссапарлар.',
+    ru: 'Научные стажировки («500 ученых») и служебные командировки ППС.',
+    en: 'Scientific internships ("500 scientists") and staff business trips.'
+  }
 };
