@@ -15,8 +15,8 @@ export default function QuickAccess({ language }: { language: Language }) {
       desc: { ru: 'Подача заявки на мобильность', kk: 'Мобильділікке өтінім беру', en: 'Apply for mobility' }
     },
     infoBtn: {
-      title: { ru: 'Документы и Правила', kk: 'Құжаттар мен Ережелер', en: 'Documents & Rules' },
-      desc: { ru: 'Информация на сайте TOU', kk: 'TOU сайтындағы ақпарат', en: 'Info on TOU website' }
+      title: { ru: 'Toraighyrov University', kk: 'Toraighyrov University', en: 'Toraighyrov University' },
+      desc: { ru: 'Подача заявки на мобильность', kk: 'Мобильділікке өтінім беру', en: 'Apply for mobility' }
     }
   };
 
