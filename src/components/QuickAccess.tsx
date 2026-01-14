@@ -69,16 +69,16 @@ export default function QuickAccess({ language }: { language: Language }) {
             className="flex items-center gap-4 p-5 rounded-xl bg-white border border-gray-200 shadow-sm hover:shadow-md hover:border-uni-secondary/30 transition-all group cursor-pointer"
           >
             {/* Иконка с фоном */}
-            <div className="bg-uni-secondary/10 p-3 rounded-lg group-hover:bg-uni-secondary text-uni-secondary group-hover:text-white transition-colors">
-              <FileText className="w-6 h-6" />
+            <div className="bg-uni-primary/10 p-3 rounded-lg group-hover:bg-uni-primary text-uni-primary group-hover:text-white transition-colors">
+              <MousePointerClick className="w-6 h-6" />
             </div>
             
             <div className="flex-1">
-              <h3 className="font-bold text-gray-900 group-hover:text-uni-secondary transition-colors">
-                {texts.infoBtn.title[language]}
+              <h3 className="font-bold text-gray-900 group-hover:text-uni-primary transition-colors">
+                {texts.portalBtn.title[language]}
               </h3>
               <p className="text-sm text-gray-500">
-                {texts.infoBtn.desc[language]}
+                {texts.portalBtn.desc[language]}
               </p>
             </div>
 
