@@ -13,6 +13,10 @@ export default function QuickAccess({ language }: { language: Language }) {
     portalBtn: {
       title: { ru: 'Margulan University', kk: 'Margulan University', en: 'Margulan University' },
       desc: { ru: 'Подача заявки на мобильность', kk: 'Мобильділікке өтінім беру', en: 'Apply for mobility' }
+    },
+    infoBtn: {
+      title: { ru: 'Toraighyrov University', kk: 'Toraighyrov University', en: 'Toraighyrov University' },
+      desc: { ru: 'Подача заявки на мобильность', kk: 'Мобильділікке өтінім беру', en: 'Apply for mobility' }
     }
   };
 
